@@ -9,11 +9,10 @@ import com.vk.api.sdk.httpclient.HttpTransportClient;
 import com.vk.api.sdk.objects.messages.Message;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.vkbot.App;
 import org.vkbot.handler.MessageHandler;
 import org.vkbot.handler.PropertyHandler;
-import org.vkbot.models.User;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Random;
@@ -32,7 +31,7 @@ public class Messenger
     private static String DEFAULT_KEYBOARD;
 
     public Messenger() {
-        // TODO: тут у Лёши добавление клавиатуры
+        keyboardInit();
 
         try {  // Получение конфигурации
             PropertyHandler propertyHandler = new PropertyHandler();
@@ -152,12 +151,26 @@ public class Messenger
         try {
             var userFields = vkApiClient.users().get(groupActor)
                     .userIds(clientId).fields().execute().get(0);
+
             return userFields.getFirstName();
         } catch (ApiException | ClientException e) {
             logger.error("Ошибка при получении имени клиента: " + e.getMessage());
-
             logger.error("Вместо имени было передано ID: " + clientId);
+
             return clientId;
         }
+    }
+
+    private void keyboardInit() {
+        String keyboard = null;
+        try {
+            var fs = new FileInputStream("src/main/resources/keyboard.json");
+            keyboard = new String(fs.readAllBytes());
+        } catch (IOException e) {
+            logger.error("Не удалось прочитать конфигурацию клавиатуры: ");
+            logger.error(e.getMessage());
+        }
+        if (keyboard == null) DEFAULT_KEYBOARD = "{\"buttons\":[], \"one_time\":true}";
+        else DEFAULT_KEYBOARD = keyboard;
     }
 }

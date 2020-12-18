@@ -1,6 +1,7 @@
 package org.vkbot.commands.list;
 
 import com.vk.api.sdk.objects.messages.Message;
+import org.vkbot.utils.OperationResult;
 
 public class HelpCommand extends Command
 {
@@ -15,31 +16,31 @@ public class HelpCommand extends Command
                 "help", "h",
                 "?"
         };
+
         for (var word : message.toLowerCase()
                 .replaceAll("[,.]", "")
                 .split(" ")) {
             for (var help : helpWords)
                 if (word.equals(help)) return true;
         }
+
         return false;
     }
 
     @Override
     public String getAnswer(Message message) {
-        // TODO изменить текст
-        String msg = "Данный бот позволяет вам подписаться на новостную рассылку портала PROГОРОД - progorod43.ru\n" +
+        String msg = "Данный бот позволяет вам подписаться на новостную рассылку сайта Кировского физико-математический лицея\n" +
                 "\nДоступные команды:\n" +
-                "\n[Приветствие] - бот, приветствует вас в ответ;\n" +
-                "\n[Список] - показывает теги, на которые вы подписаны, а также доступные для подписки;\n" +
-                "\n[Подписаться] - подписывает вас на определенный тег или список тегов, заданных через пробел. " +
-                "Для подписки на тег, состоящий из нескольких слов, напишите его в двойных кавычках. " +
-                "Отсутвие тегов после ключевого слова подписывает вас на все теги;\n" +
-                "\n[Отписаться] - отписывает вас от определенного тега или списка тегов, заданных через пробел. " +
-                "Для отписки от тега, состоящего из нескольких слов, напишите его в двойных кавычках. " +
-                "Отсутвие тегов после ключевого слова отписывает вас от всех сразу;\n";
+                "\nСтатус - узнать статус подписки." +
+                "\nПодписаться - подписывает вас на все новости." +
+                "\nОтписаться - отписывает вас от всех новостей." +
+                "\nПоследние - отправляет последние 5 новостей.";
+
         return msg;
     }
 
     @Override
-    public void exec(Message message) {}
+    public OperationResult exec(Message message) {
+        return new OperationResult();
+    }
 }

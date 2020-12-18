@@ -15,8 +15,9 @@ public class CommandManager
         add(new GreetingCommand("hello"));
         add(new SubscribeCommand("subscribe"));
         add(new UnsubscribeCommand("unsubscribe"));
-        add(new ListCommand("list"));
         add(new HelpCommand("help"));
+        add(new StatusCommand("status"));
+        add(new LastNewsCommand("lastNews"));
     }
 
     public static void add(Command command) {
@@ -30,17 +31,22 @@ public class CommandManager
 
     public static Command getCommand(Message message) {
         String messageText = message.getText();
+
         for (Command command : CommandManager.commands) {
             if (command.check(messageText)) return command;
         }
+
         return new UnknownCommand("unknown");
     }
 
     public static void execCommand(Command command, Message message) {
-        command.exec(message); // Выполнение команды
+        var result = command.exec(message); // Выполнение команды
 
         // Отправка ответа пользователю
-        var textMsg = command.getAnswer(message);
+        var textMsg = result.status
+                ? command.getAnswer(message)
+                : "Во время команды произошла ошибка: " + (!result.errorMsg.equals("") ? result.errorMsg : "неизвестная ошибка");
+
         Messenger.sendMessage(textMsg, message.getFromId());
     }
 }

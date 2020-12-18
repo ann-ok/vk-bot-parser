@@ -1,4 +1,129 @@
-2020-10-24 23:08:46,425 ERROR o.v.App [main] Запуск сервисов...
-2020-10-24 23:08:46,548 ERROR o.v.App [main] Готово
-2020-10-24 23:08:46,553 ERROR o.v.App [main] Запуск сервера работы с ВКонтакте...
-2020-10-24 23:08:48,256 ERROR o.v.App [main] Готово
+2020-12-19 00:00:03,684 ERROR c.v.a.s.c.ApiRequest [pool-3-thread-1] Problems with request: https://api.vk.com/method/messages.getLongPollServer
+java.net.UnknownHostException: api.vk.com
+	at java.net.InetAddress$CachedAddresses.get(InetAddress.java:800) ~[?:?]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1507) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1366) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1300) ~[?:?]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:374) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.8.jar:4.5.8]
+	at com.vk.api.sdk.httpclient.HttpTransportClient.call(HttpTransportClient.java:133) ~[sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.httpclient.HttpTransportClient.callWithStatusCheck(HttpTransportClient.java:114) ~[sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.httpclient.HttpTransportClient.post(HttpTransportClient.java:242) ~[sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.httpclient.HttpTransportClient.post(HttpTransportClient.java:231) ~[sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.client.ApiRequest.executeAsString(ApiRequest.java:111) [sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.client.ApiRequest.executeWithoutRetry(ApiRequest.java:75) [sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.client.ApiRequest.execute(ApiRequest.java:64) [sdk-1.0.6.jar:?]
+	at org.vkbot.utils.Messenger.initializeClient(Messenger.java:54) [classes/:?]
+	at org.vkbot.utils.Messenger.update(Messenger.java:74) [classes/:?]
+	at org.vkbot.servers.VKServer.run(VKServer.java:20) [classes/:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2020-12-19 00:00:03,690 ERROR o.v.u.Messenger [pool-3-thread-1] Ошибка при обращении к ВК: I/O exception
+2020-12-19 00:00:03,691 ERROR c.v.a.s.c.ApiRequest [pool-3-thread-1] Problems with request: https://api.vk.com/method/messages.getLongPollHistory
+java.net.UnknownHostException: api.vk.com
+	at java.net.InetAddress$CachedAddresses.get(InetAddress.java:800) ~[?:?]
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1507) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1366) ~[?:?]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1300) ~[?:?]
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:374) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:393) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:236) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:186) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108) ~[httpclient-4.5.8.jar:4.5.8]
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56) ~[httpclient-4.5.8.jar:4.5.8]
+	at com.vk.api.sdk.httpclient.HttpTransportClient.call(HttpTransportClient.java:133) ~[sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.httpclient.HttpTransportClient.callWithStatusCheck(HttpTransportClient.java:114) ~[sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.httpclient.HttpTransportClient.post(HttpTransportClient.java:242) ~[sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.httpclient.HttpTransportClient.post(HttpTransportClient.java:231) ~[sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.client.ApiRequest.executeAsString(ApiRequest.java:111) [sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.client.ApiRequest.executeWithoutRetry(ApiRequest.java:75) [sdk-1.0.6.jar:?]
+	at com.vk.api.sdk.client.ApiRequest.execute(ApiRequest.java:64) [sdk-1.0.6.jar:?]
+	at org.vkbot.utils.Messenger.getMessages(Messenger.java:90) [classes/:?]
+	at org.vkbot.utils.Messenger.update(Messenger.java:68) [classes/:?]
+	at org.vkbot.servers.VKServer.run(VKServer.java:20) [classes/:?]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130) [?:?]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630) [?:?]
+	at java.lang.Thread.run(Thread.java:832) [?:?]
+2020-12-19 00:00:03,696 ERROR o.v.u.Messenger [pool-3-thread-1] Ошибка при получении сообщений: I/O exception
+2020-12-19 00:00:03,696 ERROR o.v.u.Messenger [pool-3-thread-1] Повторное подключение к ВК через 5 секунд...
+2020-12-19 00:09:39,421 ERROR o.v.p.ParserNews [pool-2-thread-1] --- Парсинг новостей ---
+2020-12-19 00:09:39,421 ERROR o.v.p.ParserNews [pool-2-thread-1] Парсинг страницы 1:
+2020-12-19 00:09:40,058 ERROR o.v.p.ParserNews [pool-2-thread-1] (старт) Получение новостей
+2020-12-19 00:09:40,061 ERROR o.v.p.ParserNews [pool-2-thread-1] (финиш) Получение новостей. Получено новостей - 0
+2020-12-19 00:09:40,061 ERROR o.v.p.ParserNews [pool-2-thread-1] --- Парсинг новостей завершен ---
+2020-12-19 00:09:40,061 ERROR o.v.u.NewsObserver [pool-2-thread-1] --- Обновление новостей ---
+2020-12-19 00:09:40,062 ERROR o.v.u.NewsObserver [pool-2-thread-1] Удаление старых новостей...
+2020-12-19 00:09:40,065 ERROR o.v.u.NewsObserver [pool-2-thread-1] Удалено новостей - 0
+2020-12-19 00:09:40,066 ERROR o.v.u.NewsObserver [pool-2-thread-1] Готово
+2020-12-19 00:09:40,066 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новых новостей...
+2020-12-19 00:09:40,067 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новостей пользователю 79269115
+2020-12-19 00:09:40,068 ERROR o.v.u.NewsObserver [pool-2-thread-1] Отправлено новостей - 0
+2020-12-19 00:09:40,068 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новостей пользователю 29480305
+2020-12-19 00:09:40,068 ERROR o.v.u.NewsObserver [pool-2-thread-1] Отправлено новостей - 0
+2020-12-19 00:09:40,068 ERROR o.v.u.NewsObserver [pool-2-thread-1] Готово
+2020-12-19 00:09:40,072 ERROR o.v.u.NewsObserver [pool-2-thread-1] --- Обновление новостей завершено ---
+2020-12-19 00:19:40,075 ERROR o.v.p.ParserNews [pool-2-thread-1] --- Парсинг новостей ---
+2020-12-19 00:19:40,075 ERROR o.v.p.ParserNews [pool-2-thread-1] Парсинг страницы 1:
+2020-12-19 00:19:40,661 ERROR o.v.p.ParserNews [pool-2-thread-1] (старт) Получение новостей
+2020-12-19 00:19:40,664 ERROR o.v.p.ParserNews [pool-2-thread-1] (финиш) Получение новостей. Получено новостей - 0
+2020-12-19 00:19:40,664 ERROR o.v.p.ParserNews [pool-2-thread-1] --- Парсинг новостей завершен ---
+2020-12-19 00:19:40,664 ERROR o.v.u.NewsObserver [pool-2-thread-1] --- Обновление новостей ---
+2020-12-19 00:19:40,664 ERROR o.v.u.NewsObserver [pool-2-thread-1] Удаление старых новостей...
+2020-12-19 00:19:40,667 ERROR o.v.u.NewsObserver [pool-2-thread-1] Удалено новостей - 0
+2020-12-19 00:19:40,667 ERROR o.v.u.NewsObserver [pool-2-thread-1] Готово
+2020-12-19 00:19:40,667 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новых новостей...
+2020-12-19 00:19:40,669 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новостей пользователю 79269115
+2020-12-19 00:19:40,669 ERROR o.v.u.NewsObserver [pool-2-thread-1] Отправлено новостей - 0
+2020-12-19 00:19:40,669 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новостей пользователю 29480305
+2020-12-19 00:19:40,669 ERROR o.v.u.NewsObserver [pool-2-thread-1] Отправлено новостей - 0
+2020-12-19 00:19:40,669 ERROR o.v.u.NewsObserver [pool-2-thread-1] Готово
+2020-12-19 00:19:40,673 ERROR o.v.u.NewsObserver [pool-2-thread-1] --- Обновление новостей завершено ---
+2020-12-19 00:29:40,674 ERROR o.v.p.ParserNews [pool-2-thread-1] --- Парсинг новостей ---
+2020-12-19 00:29:40,674 ERROR o.v.p.ParserNews [pool-2-thread-1] Парсинг страницы 1:
+2020-12-19 00:29:41,235 ERROR o.v.p.ParserNews [pool-2-thread-1] (старт) Получение новостей
+2020-12-19 00:29:41,238 ERROR o.v.p.ParserNews [pool-2-thread-1] (финиш) Получение новостей. Получено новостей - 0
+2020-12-19 00:29:41,238 ERROR o.v.p.ParserNews [pool-2-thread-1] --- Парсинг новостей завершен ---
+2020-12-19 00:29:41,238 ERROR o.v.u.NewsObserver [pool-2-thread-1] --- Обновление новостей ---
+2020-12-19 00:29:41,239 ERROR o.v.u.NewsObserver [pool-2-thread-1] Удаление старых новостей...
+2020-12-19 00:29:41,241 ERROR o.v.u.NewsObserver [pool-2-thread-1] Удалено новостей - 0
+2020-12-19 00:29:41,241 ERROR o.v.u.NewsObserver [pool-2-thread-1] Готово
+2020-12-19 00:29:41,242 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новых новостей...
+2020-12-19 00:29:41,243 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новостей пользователю 79269115
+2020-12-19 00:29:41,243 ERROR o.v.u.NewsObserver [pool-2-thread-1] Отправлено новостей - 0
+2020-12-19 00:29:41,243 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новостей пользователю 29480305
+2020-12-19 00:29:41,243 ERROR o.v.u.NewsObserver [pool-2-thread-1] Отправлено новостей - 0
+2020-12-19 00:29:41,244 ERROR o.v.u.NewsObserver [pool-2-thread-1] Готово
+2020-12-19 00:29:41,247 ERROR o.v.u.NewsObserver [pool-2-thread-1] --- Обновление новостей завершено ---
+2020-12-19 00:39:41,251 ERROR o.v.p.ParserNews [pool-2-thread-1] --- Парсинг новостей ---
+2020-12-19 00:39:41,251 ERROR o.v.p.ParserNews [pool-2-thread-1] Парсинг страницы 1:
+2020-12-19 00:39:41,814 ERROR o.v.p.ParserNews [pool-2-thread-1] (старт) Получение новостей
+2020-12-19 00:39:41,817 ERROR o.v.p.ParserNews [pool-2-thread-1] (финиш) Получение новостей. Получено новостей - 0
+2020-12-19 00:39:41,817 ERROR o.v.p.ParserNews [pool-2-thread-1] --- Парсинг новостей завершен ---
+2020-12-19 00:39:41,817 ERROR o.v.u.NewsObserver [pool-2-thread-1] --- Обновление новостей ---
+2020-12-19 00:39:41,817 ERROR o.v.u.NewsObserver [pool-2-thread-1] Удаление старых новостей...
+2020-12-19 00:39:41,820 ERROR o.v.u.NewsObserver [pool-2-thread-1] Удалено новостей - 0
+2020-12-19 00:39:41,820 ERROR o.v.u.NewsObserver [pool-2-thread-1] Готово
+2020-12-19 00:39:41,820 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новых новостей...
+2020-12-19 00:39:41,822 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новостей пользователю 79269115
+2020-12-19 00:39:41,822 ERROR o.v.u.NewsObserver [pool-2-thread-1] Отправлено новостей - 0
+2020-12-19 00:39:41,822 ERROR o.v.u.NewsObserver [pool-2-thread-1] Рассылка новостей пользователю 29480305
+2020-12-19 00:39:41,823 ERROR o.v.u.NewsObserver [pool-2-thread-1] Отправлено новостей - 0
+2020-12-19 00:39:41,823 ERROR o.v.u.NewsObserver [pool-2-thread-1] Готово
+2020-12-19 00:39:41,828 ERROR o.v.u.NewsObserver [pool-2-thread-1] --- Обновление новостей завершено ---

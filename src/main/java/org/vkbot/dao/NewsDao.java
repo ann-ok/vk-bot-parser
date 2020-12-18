@@ -8,16 +8,24 @@ import org.vkbot.utils.Hibernate;
 
 import java.util.List;
 
-public class NewsDao {
-    public News findById(int id) {
+public class NewsDao extends AbstractDao<News, Integer> {
+    public News findById(Integer id) {
         return Hibernate.getSession().get(News.class, id);
     }
 
-    public News findByHead(String head) {
-        var session = Hibernate.getSession();
-        return (News) session.createQuery("FROM News WHERE head=:head")
-                .setParameter("head", head)
+    public News findByLink(String link) {
+        return (News) Hibernate.getSession()
+                .createQuery("FROM News WHERE link=:link")
+                .setParameter("link", link)
                 .uniqueResult();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<News> findDESCLimit(int n) {
+        return (List<News>) Hibernate.getSession()
+                .createQuery("FROM News ORDER BY date")
+                .setMaxResults(n)
+                .list();
     }
 
     public void save(News news) {
@@ -48,6 +56,13 @@ public class NewsDao {
     public List<News> findAll() {
         return (List<News>) Hibernate.getSession()
                 .createQuery("From News")
+                .list();
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<News> findAllASCDate() {
+        return (List<News>) Hibernate.getSession()
+                .createQuery("From News ORDER BY date")
                 .list();
     }
 }

@@ -4,9 +4,9 @@ import com.vk.api.sdk.objects.messages.Message;
 import org.vkbot.App;
 import org.vkbot.utils.OperationResult;
 
-public class SubscribeCommand extends Command {
-
-    public SubscribeCommand(String name) {
+public class StatusCommand extends Command
+{
+    public StatusCommand(String name) {
         super(name);
     }
 
@@ -15,21 +15,19 @@ public class SubscribeCommand extends Command {
         return message.trim()
                 .split(" ")[0]
                 .toLowerCase()
-                .equals("подписаться");
+                .equals("статус");
     }
 
     @Override
     public String getAnswer(Message message) {
-        return "Вы подписались на рассылку";
+        var user = App.userService.get(message.getFromId());
+        var msg = user.isSubscribed() ? "Вы подписаны на рассылку" : "Вы не подписаны на рассылку";
+
+        return msg;
     }
 
     @Override
     public OperationResult exec(Message message) {
-        var user = App.userService.get(message.getFromId());
-
-        user.setSubscribed(true);
-        App.userService.update(user);
-
         return new OperationResult();
     }
 }

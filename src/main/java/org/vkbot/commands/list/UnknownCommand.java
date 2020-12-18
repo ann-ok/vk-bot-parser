@@ -1,6 +1,7 @@
 package org.vkbot.commands.list;
 
 import com.vk.api.sdk.objects.messages.Message;
+import org.vkbot.utils.OperationResult;
 
 public class UnknownCommand extends Command {
 
@@ -16,9 +17,12 @@ public class UnknownCommand extends Command {
     public String getAnswer(Message message) {
         var msg = emptyBody(message.getText()) ? "Неизвестная команда" : message.getText();
         msg += "\n\n(Для справки напишите \"Помощь\")";
+
         return msg;
     }
 
     @Override
-    public void exec(Message message) {}
+    public OperationResult exec(Message message) {
+        return new OperationResult();
+    }
 }

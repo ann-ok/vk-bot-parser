@@ -2,6 +2,7 @@ package org.vkbot.commands.list;
 
 import com.vk.api.sdk.objects.messages.Message;
 import org.vkbot.utils.Messenger;
+import org.vkbot.utils.OperationResult;
 
 public class GreetingCommand extends Command
 {
@@ -18,12 +19,12 @@ public class GreetingCommand extends Command
                 "hello", "hi",
                 "ку", "qq", "q"
         };
-        for (var word : message.toLowerCase()
-                .replaceAll("[,.]", "")
-                .split(" ")) {
+
+        for (var word : message.toLowerCase().replaceAll("[,.]", "").split(" ")) {
             for (var greet : greetWords)
                 if (word.equals(greet)) return true;
         }
+
         return false;
     }
 
@@ -33,5 +34,7 @@ public class GreetingCommand extends Command
     }
 
     @Override
-    public void exec(Message message) {}
+    public OperationResult exec(Message message) {
+        return new OperationResult();
+    }
 }

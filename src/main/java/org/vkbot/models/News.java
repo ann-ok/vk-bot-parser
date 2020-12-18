@@ -1,13 +1,9 @@
 package org.vkbot.models;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "news")
@@ -21,23 +17,17 @@ public class News
 
     private String head;
 
+    private String link;
+
     @Type(type = "text")
     private String content;
 
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "news_tag",
-            joinColumns = @JoinColumn(name = "news_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id")
-    )
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Set<Tag> tags = new HashSet<>();
-
     public News() {}
 
-    public News(Timestamp date, String head, String content) {
+    public News(Timestamp date, String head, String link, String content) {
         this.date = date;
         this.head = head;
+        this.link = link;
         this.content = content;
     }
 
@@ -65,6 +55,14 @@ public class News
         this.head = head;
     }
 
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.head = link;
+    }
+
     public String getContent() {
         return content;
     }
@@ -72,13 +70,5 @@ public class News
     @Override
     public String toString() {
         return String.format("%s[%tc]: %s", id, date, head);
-    }
-
-    public Set<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
     }
 }

@@ -8,30 +8,37 @@ import java.util.List;
 public class NewsService {
     private final NewsDao newsDao = new NewsDao();
 
-    public NewsService() {
-    }
+    public NewsService() {}
 
-    public News getNews(int id) {
+    public News get(int id) {
         return newsDao.findById(id);
     }
 
-    public News findNews(String head) {
-        return newsDao.findByHead(head);
+    public News findByLink(String link) {
+        return newsDao.findByLink(link);
     }
 
-    public void saveNews(News news) {
+    public List<News> findDESCLimit(int n) {
+        return  newsDao.findDESCLimit(n);
+    }
+
+    public void save(News news) {
         newsDao.save(news);
     }
 
-    public void deleteNews(News news) {
+    public void delete(News news) {
         newsDao.delete(news);
     }
 
-    public void updateNews(News news) {
+    public void update(News news) {
         newsDao.update(news);
     }
 
-    public List<News> findAllNews() {
+    public List<News> findAll() {
         return newsDao.findAll();
+    }
+
+    public List<News> findAllASCDate() {
+        return newsDao.findAllASCDate();
     }
 }

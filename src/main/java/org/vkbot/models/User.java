@@ -1,13 +1,8 @@
 package org.vkbot.models;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -21,33 +16,17 @@ public class User
 
     private boolean subscribed;
 
-    private boolean subscribedPML;
-
-    @Column(name = "all_news")
-    private boolean allNews;
-
-    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "user_tag",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id", referencedColumnName = "id")
-    )
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Set<Tag> tags = new HashSet<>();
-
     public User() {}
 
     public User(int id) {
         this.id = id;
         lastUpdate = Timestamp.valueOf(LocalDateTime.now());
         subscribed = false;
-        allNews = false;
     }
 
-    public User(int id, boolean subscribed, boolean allNews) {
+    public User(int id, boolean subscribed) {
         this(id);
         this.subscribed = subscribed;
-        this.allNews = allNews;
     }
 
     public int getId() {
@@ -68,21 +47,5 @@ public class User
 
     public void setSubscribed(boolean subscribed) {
         this.subscribed = subscribed;
-    }
-
-    public Set<Tag> getTags() {
-        return tags;
-    }
-
-    public void setTags(Set<Tag> tags) {
-        this.tags = tags;
-    }
-
-    public boolean isAllNews() {
-        return allNews;
-    }
-
-    public void setAllNews(boolean allNews) {
-        this.allNews = allNews;
     }
 }

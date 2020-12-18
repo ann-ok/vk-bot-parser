@@ -2,11 +2,11 @@ package org.vkbot.commands.list;
 
 import com.vk.api.sdk.objects.messages.Message;
 import org.vkbot.App;
+import org.vkbot.utils.NewsObserver;
 import org.vkbot.utils.OperationResult;
 
-public class SubscribeCommand extends Command {
-
-    public SubscribeCommand(String name) {
+public class LastNewsCommand extends Command {
+    public LastNewsCommand(String name) {
         super(name);
     }
 
@@ -15,21 +15,24 @@ public class SubscribeCommand extends Command {
         return message.trim()
                 .split(" ")[0]
                 .toLowerCase()
-                .equals("подписаться");
+                .equals("последние");
     }
 
     @Override
     public String getAnswer(Message message) {
-        return "Вы подписались на рассылку";
+        StringBuilder msg = new StringBuilder();
+
+        var listNews = App.newsService.findDESCLimit(5);
+        for (var news : listNews) {
+            msg.append(NewsObserver.getNewsString(news));
+            msg.append("\n\n");
+        }
+
+        return msg.toString();
     }
 
     @Override
     public OperationResult exec(Message message) {
-        var user = App.userService.get(message.getFromId());
-
-        user.setSubscribed(true);
-        App.userService.update(user);
-
         return new OperationResult();
     }
 }

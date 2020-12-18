@@ -1,6 +1,5 @@
 package org.vkbot.dao;
 
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.vkbot.models.User;
@@ -8,9 +7,9 @@ import org.vkbot.utils.Hibernate;
 
 import java.util.List;
 
-public class UserDao
+public class UserDao extends AbstractDao<User, Integer>
 {
-    public User findById(int id) {
+    public User findById(Integer id) {
         return Hibernate.getSession().get(User.class, id);
     }
 
